@@ -1,0 +1,57 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "category_name": "книги на английском языке",
+        "category_description": "современная проза на английском языке"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "category_name": "книги на русском языке",
+        "category_description": "художественная литература на русском языке"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "product_name": "Casual Vacancy",
+        "product_description": "Casual Vacancy Роулинг Д.К., роман о  маленьком городке.",
+        "image": "",
+        "category": 1,
+        "price": "1500.00",
+        "created_at": "2025-09-24T18:06:27.418Z",
+        "updated_at": "2025-09-24T18:06:27.419Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "product_name": "The Queen`s Gambi",
+        "product_description": "The Queen`s Gambit Tevis Walter, роман о жизни девушки-шахматного вундеркинда.",
+        "image": "",
+        "category": 1,
+        "price": "1750.00",
+        "created_at": "2025-09-24T18:06:35.506Z",
+        "updated_at": "2025-09-24T18:06:35.506Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "product_name": "Я - посланник",
+        "product_description": "Я - посланник Маркус Зусак, роман с захватывающей историей судьбы.",
+        "image": "",
+        "category": 2,
+        "price": "400.00",
+        "created_at": "2025-09-24T18:06:42.359Z",
+        "updated_at": "2025-09-24T18:09:57.719Z"
+    }
+}
+]
