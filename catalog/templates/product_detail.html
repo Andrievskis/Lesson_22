@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{ product.product_name }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow mb-5">
+                <div class="card-header bg-light">
+                    <h4 class="card-title">{{ product.product_name }}</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    {% if product.image %}
+                    <img
+                            src="{{ product.image.url }}"
+                            alt="Изображение товара"
+                            class="card-img-top mb-3"
+                            style="max-width: 100%; height: auto;"
+                    >
+                    {% else %}
+                    <div class="alert alert-warning">
+                        Нет изображения
+                    </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <strong>Категория:</strong> {{ product.category.category_name }}<br>
+                        <strong>Цена:</strong> {{product.price}} ₽
+                    </div>
+
+                    <p class="card-text">{{ product.product_description }}</p>
+
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-primary">Купить</a>
+                        <a href="#" class="btn btn-outline-secondary">В корзину</a>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-light">
+                    <small class="text-muted">
+                        Дата создания: {{ product.created_at|date:"d.m.Y" }}<br>
+                        Обновлено: {{ product.updated_at|date:"d.m.Y" }}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
