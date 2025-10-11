@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Bookstore</title>
+{% endblock %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Bookstore</h1>
+    <p class="lead">Bookstore - это отличный книжный интернет-магазин</p>
+</div>
+
+<div class="row text-center justify-content-center">
+    {% for product in product_list %}
+    <div class="col-3 mb-3 me-3">
+        <div class="card mb-4 box-shadow h-100 d-flex flex-column">
+            {% if product.image %}
+            <img
+                src="{{ product.image.url }}"
+                alt="Изображение товара"
+                class="card-img-top"
+                height="350"
+                width="100%"
+            >
+            {% else %}
+            <p class="p-3">Нет изображения</p>
+            {% endif %}
+
+            <div class="card-body flex-grow-1 d-flex flex-column">
+                <div class="content-wrapper flex-grow-1">
+                    <h5 class="card-title">{{ product.product_name }}</h5>
+                    <p class="card-text">{{ product.product_description|truncatechars:100 }}</p>
+                </div>
+
+                <div class="mt-auto text-center">
+                    <a
+                        href="{% url 'catalog:product_detail' product.id %}"
+                        class="btn btn-primary"
+                    >
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% include "includes/paginator.html" %}
+{% endblock %}
