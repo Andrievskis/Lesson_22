@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Редактировать заметку</title>
+{% endblock %}
+
+{% block content %}
+<div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+        <div class="card-header">
+            Редактировать заметку
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <article>
+                    <div class="mb-3">
+                        <label for="title">Заголовок:</label>
+                        <input type="text" name="title" class="form-control" id="title"
+                               value="{{ object.title }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Содержимое:</label>
+                        <input type="text" name="description" class="form-control" id="description"
+                               value="{{ object.description }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Изображение:</label>
+                        <input class="form-control" type="file" id="formFile" name="image">
+                        {% if object.image %}
+                        <p>Текущее изображение: <img src="{{ object.image.url }}" style="max-width: 100px;"></p>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="is_published" name="is_published"
+                               {% if object.is_published %}checked{% endif %}>
+                        <label class="form-check-label" for="is_published">Опубликовать</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </article>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
