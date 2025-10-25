@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, View, DetailView, CreateView
+from django.views.generic import ListView, View, DetailView, CreateView, UpdateView, DeleteView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, ContactInfo, Category
 
 
@@ -98,10 +99,29 @@ class ProductDetailView(DetailView):
 class ProductCreateView(CreateView):
     model = Product
     template_name = 'add_product.html'
-    fields = ['product_name', 'product_description', 'category', 'price']
-    success_url = reverse_lazy('catalog:home')
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse_lazy('catalog:home')
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         return context
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    template_name = 'product_update.html'
+    form_class = ProductForm
+
+    def get_success_url(self):
+        return reverse_lazy('catalog:home')
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product_delete.html'
+
+    def get_success_url(self):
+        return reverse_lazy('catalog:home')

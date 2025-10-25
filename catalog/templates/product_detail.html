@@ -34,8 +34,9 @@
                     <p class="card-text">{{ product.product_description }}</p>
 
                     <div class="d-grid gap-2">
-                        <a href="#" class="btn btn-primary">Купить</a>
                         <a href="#" class="btn btn-outline-secondary">В корзину</a>
+                        <a href="{% url 'catalog:product_update' product.id %}" class="btn btn-primary">Редактировать</a>
+                        <a href="{% url 'catalog:product_delete' product.id %}" class="btn btn-outline-secondary">Удалить</a>
                     </div>
                 </div>
 

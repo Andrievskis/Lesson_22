@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Удалить продукт</title>
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h2>Удалить продукт {{ product.product_name }}?</h2>
+    <hr>
+
+    <div class="mt-4">
+        <h3>{{ product.product_name }}</h3>
+        <p>{{ product.product_description }}</p>
+    </div>
+
+    <form class="form-horizontal" method="post">
+        {% csrf_token %}
+        <div class="form-actions mt-4">
+            <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                style="padding: 15px 30px; font-size: 18px;"
+            >
+                Удалить
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
