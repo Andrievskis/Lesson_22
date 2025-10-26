@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -67,7 +68,7 @@ class ContactsView(View):
 #     context = {'product':product}
 #     return render(request, "product_detail.html", context)
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'product_detail.html'
     context_object_name = 'product'
@@ -96,7 +97,7 @@ class ProductDetailView(DetailView):
 #
 #     return render(request, 'add_product.html', {'categories': categories})
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     template_name = 'add_product.html'
     form_class = ProductForm
@@ -110,7 +111,7 @@ class ProductCreateView(CreateView):
         context['categories'] = Category.objects.all()
         return context
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     template_name = 'product_update.html'
     form_class = ProductForm
@@ -119,7 +120,7 @@ class ProductUpdateView(UpdateView):
         return reverse_lazy('catalog:home')
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'product_delete.html'
 
