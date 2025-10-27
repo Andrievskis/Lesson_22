@@ -1,7 +1,7 @@
 from django.urls import path
 from catalog.apps import CatalogConfig
 from catalog.views import ProductListView, ContactsView, ProductDetailView, ProductCreateView, ProductUpdateView, \
-    ProductDeleteView
+    ProductDeleteView, UnpublishProductView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -14,6 +14,7 @@ urlpatterns = [
     path("add_product/", ProductCreateView.as_view(), name="add_product"),
     path("product_update/<int:pk>/", ProductUpdateView.as_view(), name="product_update"),
     path("product_delete/<int:pk>/", ProductDeleteView.as_view(), name="product_delete"),
+    path("products/<int:pk>/unpublish/", UnpublishProductView.as_view(), name="unpublish_product"),
 ]
 
 if settings.DEBUG:

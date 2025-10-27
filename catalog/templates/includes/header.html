@@ -1,9 +1,36 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal">Bookstore</h5>
-    <nav class="ms-5">
-        <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
-        <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
-        <a class="p-2 btn btn-outline-primary" href="/add_product/">Добавить продукт</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_main' %}">Блог</a>
+
+    <nav role="navigation" class="ms-5">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="/">Каталог</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="/add_product/">Добавить продукт</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="{% url 'blog:blog_main' %}">Блог</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выход</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="{% url 'users:update_profile' %}">Редактировать профиль</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Вход</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
+            </li>
+            {% endif %}
+        </ul>
     </nav>
-</div>
+</header>

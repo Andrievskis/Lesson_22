@@ -44,7 +44,7 @@ class NoteDetail(generic.DetailView):
         subject = 'Поздравляем! Вы набрали 100 просмотров!'
         message = f'Ваша заметка "{note.title}" набрала 100 просмотров!'
         from_email = settings.DEFAULT_FROM_EMAIL
-        recipient_list = (settings.ADMIN_EMAIL,)
+        recipient_list = (settings.SERVER_EMAIL,)
 
         send_mail(
             subject,
